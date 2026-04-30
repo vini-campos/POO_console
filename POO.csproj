@@ -64,7 +64,8 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="img\uno.jpg" />
+    <Content Include="img\Fusca.jpg" />
+    <Content Include="img\Uno.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

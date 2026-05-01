@@ -11,8 +11,6 @@ namespace POO
     internal class Apresentacao:Form
     {
         //criar um objeto do automovel
-
-
         // objeto
         PictureBox img = new PictureBox();
         public Button btnObj01 = new Button();
@@ -32,8 +30,6 @@ namespace POO
         {
             this.Text = " Titulo ";
             this.Size = new Size(600, 600);
-
-           
 
             //uno
             btnObj01.Text = "Uno";
@@ -59,16 +55,8 @@ namespace POO
             txtModelo.Location = new Point(300, 325);
             txtVelocidade.Location = new Point(300, 350);
             txtAno.Location = new Point(300, 370);
-            
-
-            
-            
-
 
             this.Controls.AddRange(new Control[] { btnObj01, btnObj02, btnObj03});
-
-            
-
 
         }
 
@@ -106,11 +94,6 @@ namespace POO
             img.Height = 100;
             
             img.Location = new Point(100, 70);
-
-            
-            
-            
-            
             img.Image = Image.FromFile("C:\\Users\\LabInfo\\Desktop\\ds\\img\\" + carro01.Modelo + ".jpg");
             img.Width = 200;
             img.Height = 100;
@@ -133,14 +116,9 @@ namespace POO
             // 
             this.ClientSize = new System.Drawing.Size(278, 244);
             this.Name = "Apresentacao";
-            this.Load += new System.EventHandler(this.Apresentacao_Load);
             this.ResumeLayout(false);
 
         }
 
-        private void Apresentacao_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

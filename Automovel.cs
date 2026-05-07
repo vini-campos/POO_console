@@ -9,22 +9,53 @@ namespace POO
     internal class Automovel
     {
         // criar as propriedades da classe automovel
-        public string Marca;
+        public string Marca { get; set; }
         public string Modelo { get; set; }
         public string Velocidade { get; set; }
         public int Ano { get; set; }
+        public string imagen { get; set; }
 
+        /*  
+          private string Marca;
 
-        public string Imagem { get; set; }
+          public void SetMarca(string marca) {
+                  Marca = marca;
+          }
 
-        public void setMarca(string marca)
+          public string GetMarca() {
+               return Marca;
+          }
+         */
+
+        // criar um constructor para a classe automovel
+        public Automovel()
         {
-            Marca = marca;
+
         }
 
-        public string GetMarca()
+        public Automovel(string marca)
         {
-            return Marca;
+            this.Marca = marca;
+        }
+
+        public void Acelerar()
+        {
+            Console.WriteLine("Acelerando o carro");
+        }
+
+        public string Acelerar(string velocidade)
+        {
+            return " Acelerando o carro a " + velocidade + " KM/H";
+        }
+
+        public int Acelerar(int velocidade)
+        {
+            return velocidade + 10;
+        }
+
+        public virtual string Frear()
+        {
+            return "Freando o carro";
         }
 
     }

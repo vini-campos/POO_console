@@ -1,124 +1,97 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Drawing;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 namespace POO
 {
-    internal class Apresentacao:Form
+    class Apresentacao : Form
     {
-        //criar um objeto do automovel
-        // objeto
-        PictureBox img = new PictureBox();
-        public Button btnObj01 = new Button();
-        public Button btnObj02 = new Button();
-        public Button btnObj03 = new Button();
-        public Button btnObj04 = new Button();
+        // criar um objeto do automovel
+        Automovel carr01 = new Automovel();
 
+        // Objeto
+        PictureBox img = new PictureBox();
         Label txtMarca = new Label();
+        Label txtTipo = new Label();
+        Label txtAno = new Label();
         Label txtVelocidade = new Label();
         Label txtModelo = new Label();
-        Label txtAno = new Label();
+        Label txtFrear = new Label();
 
-        Automovel carro01 = new Automovel();
+        Button btobj01 = new Button();
+        Button btobj02 = new Button();
+
 
         // toda classe tem um construtor
-        public Apresentacao() 
+        public Apresentacao()
         {
-            this.Text = " Titulo ";
+            this.Text = "Titulo ";
             this.Size = new Size(600, 600);
+            btobj01.Text = " Clicar ";
+            btobj01.Location = new Point(50, 50);
+            btobj01.Click += clicar;
 
-            //uno
-            btnObj01.Text = "Uno";
-            btnObj01.Location = new Point(50, 50);
-            btnObj01.Click += clicar;
+            btobj02.Text = " Herança ";
+            btobj02.Location = new Point(50, 100);
+            btobj02.Click += Heranca;
 
-            //2
-            btnObj02.Text = "Fusca";
-            btnObj02.Location = new Point(50, 70);
-            btnObj02.Click += clicar;
+            txtFrear.AutoSize = true;
 
-            //3
-            btnObj03.Text = "Brasilia";
-            btnObj03.Location = new Point(50, 90);
-            btnObj03.Click += clicar;
-
-
-            //carro01.setMarca("Fiat");
-            //this.txtMarca.Text = carro01.GetMarca();
-            carro01.Marca = "Fiat";
-            txtMarca.Text = " marca: " + carro01.Marca;
-            txtMarca.Location = new Point(300, 300);
-            txtModelo.Location = new Point(300, 325);
-            txtVelocidade.Location = new Point(300, 350);
-            txtAno.Location = new Point(300, 370);
-
-            this.Controls.AddRange(new Control[] { btnObj01, btnObj02, btnObj03});
+            // Control[] controles = new Control[] { txtMarca, btobj01 }; 
+            //this.Controls.Add(btobj01);
+            this.Controls.AddRange(new Control[] { txtMarca, btobj01, txtVelocidade
+            , txtTipo, txtAno, txtModelo, img, btobj02, txtFrear});
 
         }
 
-        // metodo de evento
+        // metodo de Evento
         private void clicar(object sender, EventArgs e)
         {
+            //MessageBox.Show("Metodo de Evento");
+            // fazer apresentação da carro01
+            //carr01.SetMarca("Fiat");
+            // this.txtMarca.Text = " Marca : " + carr01.GetMarca();
+            carr01.Marca = "Fiat";
+            carr01.Ano = 2020;
+            carr01.Modelo = "Uno";
+            carr01.Velocidade = "200 km/h";
 
-            Button botao = (Button)sender;
-            Console.WriteLine(botao.Text + " AGNALDO");
-            switch (botao.Text)
-            {
-                case "Uno":
-                    carro01.Velocidade = "3000000 km/h";
-                    carro01.Marca = "Fiat";
-                    carro01.Ano = 2020;
-                    carro01.Modelo = "Uno";
-                    break;
-                case "Fusca":
-                    carro01.Velocidade = "3 km/h";
-                    carro01.Marca = "Volkswagen";
-                    carro01.Ano = 1945;
-                    carro01.Modelo = "Fusca";
-                    break;
-                case "Brasilia":
-                    carro01.Velocidade = "80 km/h";
-                    carro01.Marca = "Volkswagen";
-                    carro01.Ano = 1995;
-                    carro01.Modelo = "Brasilia";
-                    break;
 
-            }
-            
-            img.SizeMode = PictureBoxSizeMode.Zoom;
-            img.Width = 50;
-            img.Height = 100;
-            
-            img.Location = new Point(100, 70);
-            img.Image = Image.FromFile("C:\\Users\\LabInfo\\Desktop\\ds\\img\\" + carro01.Modelo + ".jpg");
-            img.Width = 200;
-            img.Height = 100;
-            
-            MessageBox.Show("Metodo de evento");
-           
-            txtMarca.Text = carro01.Marca;
-            txtModelo.Text = carro01.Modelo;
-            txtVelocidade.Text = carro01.Velocidade;
-            txtAno.Text = carro01.Ano.ToString();
-            this.Controls.AddRange(new Control[] { txtMarca, btnObj01, txtAno, txtModelo, txtVelocidade, img});
+            txtMarca.Text = " Marca : " + carr01.Marca;
+            txtModelo.Text = "Tipo :" + carr01.Modelo;
+            txtAno.Text = " Ano : " + carr01.Ano;
+            txtVelocidade.AutoSize = true;
+            txtVelocidade.Text = " Velocidade :  " + carr01.Acelerar(120).ToString();
+            txtFrear.Text = " Frear : " + carr01.Frear();
+
+            this.txtMarca.Location = new Point(100, 100);
+            this.txtAno.Location = new Point(100, 130);
+            this.txtModelo.Location = new Point(100, 150);
+            this.txtVelocidade.Location = new Point(100, 180);
+            this.txtFrear.Location = new Point(100, 210);
+
+            // COLOCAR IMAGEM
+            //img.Image = Image.FromFile(@"C:\Users\LabInfo\source\repos\'Emerson - Rocha'\POO_\IMG\uno.jpg");
+            //img.SizeMode = PictureBoxSizeMode.AutoSize;
+            //img.Width = 200;
+            //img.Height = 150;
+            // this.img.Location = new Point(100, 200);
+
 
         }
 
-        private void InitializeComponent()
+        private void Heranca(object sender, EventArgs e)
         {
-            this.SuspendLayout();
-            // 
-            // Apresentacao
-            // 
-            this.ClientSize = new System.Drawing.Size(278, 244);
-            this.Name = "Apresentacao";
-            this.ResumeLayout(false);
-
+            Carro Obj01Carro = new Carro("CHEVETTE", "SUV");
+            txtMarca.Text = " Marca : " + Obj01Carro.Marca;
+            txtTipo.Text = " Tipo : " + Obj01Carro.Modelo;
+            txtFrear.Text = Obj01Carro.Frear();
         }
-
     }
 }

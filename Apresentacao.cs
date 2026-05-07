@@ -12,86 +12,82 @@ namespace POO
 {
     class Apresentacao : Form
     {
-        // criar um objeto do automovel
-        Automovel carr01 = new Automovel();
+        Monstro Leviata1 = new Monstro();
 
         // Objeto
-        PictureBox img = new PictureBox();
-        Label txtMarca = new Label();
-        Label txtTipo = new Label();
-        Label txtAno = new Label();
-        Label txtVelocidade = new Label();
-        Label txtModelo = new Label();
-        Label txtFrear = new Label();
+        PictureBox imagem = new PictureBox();
+        Label lblNome = new Label();
+        Label lblAparencia = new Label();
+        Label lblMovimento = new Label();
+        Label lblTamanho = new Label();
+        Label lblPeso = new Label();
+        Label lblHabitat = new Label();
 
-        Button btobj01 = new Button();
-        Button btobj02 = new Button();
-
+        //btn dos monstros
+        Button btnReaper = new Button();
+        Button btnGhost = new Button();
+        Button btnSeaDragon = new Button();
+        Button btnSeaImperor = new Button();
 
         // toda classe tem um construtor
         public Apresentacao()
         {
-            this.Text = "Titulo ";
-            this.Size = new Size(600, 600);
-            btobj01.Text = " Clicar ";
-            btobj01.Location = new Point(50, 50);
-            btobj01.Click += clicar;
+            btnReaper.Click += clicar;
 
-            btobj02.Text = " Herança ";
-            btobj02.Location = new Point(50, 100);
-            btobj02.Click += Heranca;
+            this.Text = "Monstros de Subnautica";
+            this.Size = new Size(800, 600);
 
-            txtFrear.AutoSize = true;
+            btnReaper.Text = "Leviatã Ceifador";
+            btnReaper.AutoSize = true;
+            btnGhost.Text = "Leviatã Fantasma";
+            btnGhost.AutoSize = true;
+            btnSeaDragon.Text = "Dragão do Mar";
+            btnSeaDragon.AutoSize = true;
+            btnSeaImperor.Text = "Imperador do Mar";
+            btnSeaImperor.AutoSize = true;
 
-            // Control[] controles = new Control[] { txtMarca, btobj01 }; 
-            //this.Controls.Add(btobj01);
-            this.Controls.AddRange(new Control[] { txtMarca, btobj01, txtVelocidade
-            , txtTipo, txtAno, txtModelo, img, btobj02, txtFrear});
+            btnReaper.Location = new Point(190, 50);
+            btnGhost.Location = new Point(290, 50);
+            btnSeaDragon.Location = new Point(390, 50);
+            btnSeaImperor.Location = new Point(490, 50);
 
+            this.Controls.AddRange(new Control[] { btnReaper, btnGhost, btnSeaDragon, btnSeaImperor, lblNome, lblAparencia,
+                lblMovimento, lblTamanho, lblPeso, lblHabitat, imagem });
         }
 
         // metodo de Evento
-        private void clicar(object sender, EventArgs e)
+
+        private void clicar(Object sender, EventArgs e)
         {
-            //MessageBox.Show("Metodo de Evento");
-            // fazer apresentação da carro01
-            //carr01.SetMarca("Fiat");
-            // this.txtMarca.Text = " Marca : " + carr01.GetMarca();
-            carr01.Marca = "Fiat";
-            carr01.Ano = 2020;
-            carr01.Modelo = "Uno";
-            carr01.Velocidade = "200 km/h";
+            Leviata1.Nome = "Leviatã Ceifador";
+            Leviata1.Aparencia = "Monstro marinho gigante com cabeça grande e dentes afiados";
+            Leviata1.Movimento = "Nada rapidamente para atacar suas presas";
+            Leviata1.Tamanho = "20 metros";
+            Leviata1.Peso = "5000 kg";
+            Leviata1.Habitat = "Águas profundas do planeta 4546B";
 
-
-            txtMarca.Text = " Marca : " + carr01.Marca;
-            txtModelo.Text = "Tipo :" + carr01.Modelo;
-            txtAno.Text = " Ano : " + carr01.Ano;
-            txtVelocidade.AutoSize = true;
-            txtVelocidade.Text = " Velocidade :  " + carr01.Acelerar(120).ToString();
-            txtFrear.Text = " Frear : " + carr01.Frear();
-
-            this.txtMarca.Location = new Point(100, 100);
-            this.txtAno.Location = new Point(100, 130);
-            this.txtModelo.Location = new Point(100, 150);
-            this.txtVelocidade.Location = new Point(100, 180);
-            this.txtFrear.Location = new Point(100, 210);
-
-            // COLOCAR IMAGEM
-            //img.Image = Image.FromFile(@"C:\Users\LabInfo\source\repos\'Emerson - Rocha'\POO_\IMG\uno.jpg");
-            //img.SizeMode = PictureBoxSizeMode.AutoSize;
-            //img.Width = 200;
-            //img.Height = 150;
-            // this.img.Location = new Point(100, 200);
-
+            lblNome.Text = "Nome: " + Leviata1.Nome;
+            lblNome.Location = new Point(50,150);
+            lblNome.AutoSize = true;
+            lblAparencia.Text = "Aparência: " + Leviata1.Aparencia;
+            lblAparencia.Location = new Point(50, 180);
+            lblAparencia.AutoSize = true;
+            lblMovimento.Text = "Movimento: " + Leviata1.Movimento;
+            lblMovimento.Location = new Point(50, 210);
+            lblMovimento.AutoSize = true;
+            lblTamanho.Text = "Tamanho: " + Leviata1.Tamanho;
+            lblTamanho.Location = new Point(50, 240);
+            lblTamanho.AutoSize = true;
+            lblPeso.Text = "Peso: " + Leviata1.Peso;
+            lblPeso.Location = new Point(50, 270);
+            lblPeso.AutoSize = true;
+            lblHabitat.Text = "Habitat: " + Leviata1.Habitat;
+            lblHabitat.Location = new Point(50, 300);
+            lblHabitat.AutoSize = true;
 
         }
 
-        private void Heranca(object sender, EventArgs e)
-        {
-            Carro Obj01Carro = new Carro("CHEVETTE", "SUV");
-            txtMarca.Text = " Marca : " + Obj01Carro.Marca;
-            txtTipo.Text = " Tipo : " + Obj01Carro.Modelo;
-            txtFrear.Text = Obj01Carro.Frear();
-        }
     }
 }
+
+//criar outra classe para armazenar dados dos monstros

@@ -15,7 +15,7 @@ namespace POO
 
             public override string Som()
             {
-                return "Emite um rugido estremecedor";
+                return Nome+ ": " + "Emite um rugido estremecedor";
             }
         }
 }

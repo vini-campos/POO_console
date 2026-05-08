@@ -42,7 +42,9 @@ namespace POO
             btnSeaImperor.Click += clicar;
 
             this.Text = "Monstros de Subnautica";
-            this.Size = new Size(800, 600);
+            this.Size = new Size(1200, 800);
+            this.BackColor = Color.FromArgb(34, 65, 84);
+            this.StartPosition = FormStartPosition.CenterScreen;
 
             btnReaper.Text = "Leviatã Ceifador";
             btnReaper.AutoSize = true;
@@ -60,6 +62,7 @@ namespace POO
             ReaperLeviata.Tamanho = "20 metros";
             ReaperLeviata.Peso = "3500 kg";
             ReaperLeviata.Habitat = "Águas rasas do planeta 4546-B";
+            ReaperLeviata.Imagem = Properties.Resources.Reaper;
             //ghost
             GhostLeviata.Nome = "Leviatã fantasma";
             GhostLeviata.Aparencia = "Monstro marinho com pele transparente e com leve coloração azul;";
@@ -67,6 +70,7 @@ namespace POO
             GhostLeviata.Tamanho = "50 metros";
             GhostLeviata.Peso = "5000 kg";
             GhostLeviata.Habitat = "Águas profundas na entrada das cavernas de magma";
+            GhostLeviata.Imagem = Properties.Resources.Ghost;
             //seaEmperor
             SeaEmperorLeviata.Nome = "Leviatã imperador do mar";
             SeaEmperorLeviata.Aparencia = "Monstro marinho com coloração cinza, olhos azuis e tentáculos gigantes";
@@ -74,6 +78,7 @@ namespace POO
             SeaEmperorLeviata.Tamanho = "75 metros";
             SeaEmperorLeviata.Peso = "6500 kg";
             SeaEmperorLeviata.Habitat = "Habita as profundas cavernas de magma dentro da instalação da inteligência alienígena: arquitetos";
+            SeaEmperorLeviata.Imagem = Properties.Resources.Sea_emperor;
             //SeaDragon
             SeaDragonLeviata.Nome = "Leviatã dragão do mar";
             SeaDragonLeviata.Aparencia = "Monstro marinho gigantesco com escamas escarlate e olhos laranja";
@@ -81,36 +86,71 @@ namespace POO
             SeaDragonLeviata.Tamanho = "125 metros";
             SeaDragonLeviata.Peso = "8000 kg";
             SeaDragonLeviata.Habitat = "Habita a parte ativa das cavernas de magma, protegendo a instalação alienígena dos arquitetos";
+            SeaDragonLeviata.Imagem = Properties.Resources.Sea_Dragon;
 
             btnReaper.Location = new Point(190, 50);
+            btnReaper.BackColor = Color.DarkCyan;
+            btnReaper.ForeColor = Color.White;
+
             btnGhost.Location = new Point(290, 50);
+            btnGhost.BackColor = Color.DarkCyan;
+            btnGhost.ForeColor = Color.White;
+
             btnSeaDragon.Location = new Point(390, 50);
+            btnSeaDragon.BackColor = Color.DarkCyan;
+            btnSeaDragon.ForeColor = Color.White;
+
             btnSeaImperor.Location = new Point(490, 50);
+            btnSeaImperor.BackColor = Color.DarkCyan;
+            btnSeaImperor.ForeColor = Color.White;
 
             //posicao dos dados
             lblNome.Location = new Point(50, 150);
             lblNome.AutoSize = true;
+            lblNome.ForeColor = Color.White;
 
             lblAparencia.Location = new Point(50, 180);
             lblAparencia.AutoSize = true;
+            lblAparencia.ForeColor = Color.White;
 
             lblMovimento.Location = new Point(50, 210);
             lblMovimento.AutoSize = true;
+            lblMovimento.ForeColor = Color.White;
 
             lblTamanho.Location = new Point(50, 240);
             lblTamanho.AutoSize = true;
+            lblTamanho.ForeColor = Color.White;
 
             lblPeso.Location = new Point(50, 270);
             lblPeso.AutoSize = true;
+            lblPeso.ForeColor = Color.White;
 
             lblHabitat.Location = new Point(50, 300);
             lblHabitat.AutoSize = true;
+            lblHabitat.ForeColor = Color.White;
 
             lblReaperSom.Location = new Point(50, 330);
             lblReaperSom.AutoSize = true;
+            lblReaperSom.ForeColor = Color.White;
+
+            imagem.Size = new Size(500, 300);
+            imagem.Location = new Point(350, 450);
+            imagem.SizeMode = PictureBoxSizeMode.Zoom;
 
             this.Controls.AddRange(new Control[] { btnReaper, btnGhost, btnSeaDragon, btnSeaImperor, lblNome, lblAparencia,
-                lblMovimento, lblTamanho, lblPeso, lblHabitat, imagem });
+                lblMovimento, lblTamanho, lblPeso, lblHabitat, imagem, lblReaperSom });
+        }
+
+        private void MostrarMonstro(Monstro m)
+        {
+            lblNome.Text = m.Nome;
+            lblAparencia.Text = m.Aparencia;
+            lblMovimento.Text = m.Movimento;
+            lblTamanho.Text = m.Tamanho;
+            lblPeso.Text = m.Peso;
+            imagem.Image = m.Imagem;
+            lblHabitat.Text = m.Descricao();
+            lblReaperSom.Text = m.Som();
         }
 
         // metodo de Evento
@@ -119,42 +159,20 @@ namespace POO
         {
             if (sender == btnReaper)
             {
-                lblNome.Text = ReaperLeviata.Nome;
-                lblAparencia.Text = ReaperLeviata.Aparencia;
-                lblMovimento.Text = ReaperLeviata.Movimento;
-                lblTamanho.Text = ReaperLeviata.Tamanho;
-                lblPeso.Text = ReaperLeviata.Peso;
-                lblHabitat.Text = ReaperLeviata.Descricao();
-                lblHabitat.Text = ReaperLeviata.Som();
+                MostrarMonstro(ReaperLeviata);
             }
             else if (sender == btnGhost)
             {
-                lblNome.Text = GhostLeviata.Nome;
-                lblAparencia.Text = GhostLeviata.Aparencia;
-                lblMovimento.Text = GhostLeviata.Movimento;
-                lblTamanho.Text = GhostLeviata.Tamanho;
-                lblPeso.Text = GhostLeviata.Peso;
-                lblHabitat.Text = GhostLeviata.Habitat;
+                MostrarMonstro(GhostLeviata);
             }
             else if (sender == btnSeaImperor)
             {
-                lblNome.Text = SeaEmperorLeviata.Nome;
-                lblAparencia.Text = SeaEmperorLeviata.Aparencia;
-                lblMovimento.Text = SeaEmperorLeviata.Movimento;
-                lblTamanho.Text = SeaEmperorLeviata.Tamanho;
-                lblPeso.Text = SeaEmperorLeviata.Peso;
-                lblHabitat.Text = SeaEmperorLeviata.Habitat;
+                MostrarMonstro(SeaEmperorLeviata);
             }
             else if (sender == btnSeaDragon)
             {
-                lblNome.Text = SeaDragonLeviata.Nome;
-                lblAparencia.Text = SeaDragonLeviata.Aparencia;
-                lblMovimento.Text = SeaDragonLeviata.Movimento;
-                lblTamanho.Text = SeaDragonLeviata.Tamanho;
-                lblPeso.Text = SeaDragonLeviata.Peso;
-                lblHabitat.Text = SeaDragonLeviata.Habitat;
+                MostrarMonstro(SeaDragonLeviata);
             }
         }
     }
 }
-//adicionar a imagem em cada um

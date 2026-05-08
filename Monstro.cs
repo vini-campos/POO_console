@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,16 +15,16 @@ namespace POO
         public string Tamanho { get; set; }
         public string Peso { get; set; }
         public string Habitat { get; set; }
-        public string Imagem { get; set; }
+        public Image Imagem { get; set; }
 
         public virtual string Descricao()
         {
-            return Nome + "Vive em: " + Habitat;
+            return Nome + " Vive em: " + Habitat;
         }
 
         public virtual string Som()
         {
-            return Nome + "Som genérico";
+            return Nome + ": Som genérico";
         }
     }
 }

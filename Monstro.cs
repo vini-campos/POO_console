@@ -16,11 +16,14 @@ namespace POO
         public string Habitat { get; set; }
         public string Imagem { get; set; }
 
-        public Monstro()
+        public virtual string Descricao()
         {
-
+            return Nome + "Vive em: " + Habitat;
         }
 
-
+        public virtual string Som()
+        {
+            return Nome + "Som genérico";
+        }
     }
 }

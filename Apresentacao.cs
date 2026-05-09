@@ -1,124 +1,142 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Drawing;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 namespace POO
 {
-    internal class Apresentacao:Form
+    class Apresentacao : Form
     {
-        //criar um objeto do automovel
-        // objeto
-        PictureBox img = new PictureBox();
-        public Button btnObj01 = new Button();
-        public Button btnObj02 = new Button();
-        public Button btnObj03 = new Button();
-        public Button btnObj04 = new Button();
+        Reaper ReaperLeviata = new Reaper();
+        Ghost GhostLeviata = new Ghost();
+        SeaDragon SeaDragonLeviata = new SeaDragon();
+        SeaEmperor SeaEmperorLeviata = new SeaEmperor();
 
-        Label txtMarca = new Label();
-        Label txtVelocidade = new Label();
-        Label txtModelo = new Label();
-        Label txtAno = new Label();
+        PictureBox imagem = new PictureBox();
+        Label lblNome = new Label();
+        Label lblAparencia = new Label();
+        Label lblMovimento = new Label();
+        Label lblTamanho = new Label();
+        Label lblPeso = new Label();
+        Label lblHabitat = new Label();
+        Label lblReaperSom = new Label();
 
-        Automovel carro01 = new Automovel();
+        Button btnReaper = new Button();
+        Button btnGhost = new Button();
+        Button btnSeaDragon = new Button();
+        Button btnSeaImperor = new Button();
 
-        // toda classe tem um construtor
-        public Apresentacao() 
+        public Apresentacao()
         {
-            this.Text = " Titulo ";
-            this.Size = new Size(600, 600);
+            btnReaper.Click += clicar;
+            btnGhost.Click += clicar;
+            btnSeaDragon.Click += clicar;
+            btnSeaImperor.Click += clicar;
 
-            //uno
-            btnObj01.Text = "Uno";
-            btnObj01.Location = new Point(50, 50);
-            btnObj01.Click += clicar;
+            this.Text = "Monstros de Subnautica";
+            this.Size = new Size(1200, 800);
+            this.BackColor = Color.FromArgb(34, 65, 84);
+            this.StartPosition = FormStartPosition.CenterScreen;
 
-            //2
-            btnObj02.Text = "Fusca";
-            btnObj02.Location = new Point(50, 70);
-            btnObj02.Click += clicar;
+            btnReaper.Text = "Leviatã Ceifador";
+            btnReaper.AutoSize = true;
+            btnGhost.Text = "Leviatã Fantasma";
+            btnGhost.AutoSize = true;
+            btnSeaDragon.Text = "Dragão do Mar";
+            btnSeaDragon.AutoSize = true;
+            btnSeaImperor.Text = "Imperador do Mar";
+            btnSeaImperor.AutoSize = true;
 
-            //3
-            btnObj03.Text = "Brasilia";
-            btnObj03.Location = new Point(50, 90);
-            btnObj03.Click += clicar;
+            //posicao e cores dos btn
+            btnReaper.Location = new Point(370, 50);
+            btnReaper.BackColor = Color.DarkCyan;
+            btnReaper.ForeColor = Color.White;
 
+            btnGhost.Location = new Point(480, 50);
+            btnGhost.BackColor = Color.DarkCyan;
+            btnGhost.ForeColor = Color.White;
 
-            //carro01.setMarca("Fiat");
-            //this.txtMarca.Text = carro01.GetMarca();
-            carro01.Marca = "Fiat";
-            txtMarca.Text = " marca: " + carro01.Marca;
-            txtMarca.Location = new Point(300, 300);
-            txtModelo.Location = new Point(300, 325);
-            txtVelocidade.Location = new Point(300, 350);
-            txtAno.Location = new Point(300, 370);
+            btnSeaDragon.Location = new Point(595, 50);
+            btnSeaDragon.BackColor = Color.DarkCyan;
+            btnSeaDragon.ForeColor = Color.White;
 
-            this.Controls.AddRange(new Control[] { btnObj01, btnObj02, btnObj03});
+            btnSeaImperor.Location = new Point(695, 50);
+            btnSeaImperor.BackColor = Color.DarkCyan;
+            btnSeaImperor.ForeColor = Color.White;
 
+            //posicao dos dados
+            lblNome.Location = new Point(50, 150);
+            lblNome.AutoSize = true;
+            lblNome.ForeColor = Color.White;
+
+            lblAparencia.Location = new Point(50, 180);
+            lblAparencia.AutoSize = true;
+            lblAparencia.ForeColor = Color.White;
+
+            lblMovimento.Location = new Point(50, 210);
+            lblMovimento.AutoSize = true;
+            lblMovimento.ForeColor = Color.White;
+
+            lblTamanho.Location = new Point(50, 240);
+            lblTamanho.AutoSize = true;
+            lblTamanho.ForeColor = Color.White;
+
+            lblPeso.Location = new Point(50, 270);
+            lblPeso.AutoSize = true;
+            lblPeso.ForeColor = Color.White;
+
+            lblHabitat.Location = new Point(50, 300);
+            lblHabitat.AutoSize = true;
+            lblHabitat.ForeColor = Color.White;
+
+            lblReaperSom.Location = new Point(50, 330);
+            lblReaperSom.AutoSize = true;
+            lblReaperSom.ForeColor = Color.White;
+
+            imagem.Size = new Size(500, 300);
+            imagem.Location = new Point(350, 450);
+            imagem.SizeMode = PictureBoxSizeMode.Zoom;
+
+            this.Controls.AddRange(new Control[] { btnReaper, btnGhost, btnSeaDragon, btnSeaImperor, lblNome, lblAparencia,
+                lblMovimento, lblTamanho, lblPeso, lblHabitat, imagem, lblReaperSom });
         }
 
-        // metodo de evento
-        private void clicar(object sender, EventArgs e)
+        //exibe as infomacoes do btn clicado
+        private void MostrarMonstro(Monstro m)
         {
+            lblNome.Text = m.Nome;
+            lblAparencia.Text = m.Aparencia;
+            lblMovimento.Text = m.Movimento;
+            lblTamanho.Text = "Tamanho: " + m.Tamanho + " metros";
+            lblPeso.Text = "Peso: " + m.Peso + " Kg";
+            imagem.Image = m.Imagem;
+            lblHabitat.Text = m.Descricao();
+            lblReaperSom.Text = m.Som();
+        }
 
-            Button botao = (Button)sender;
-            Console.WriteLine(botao.Text + " AGNALDO");
-            switch (botao.Text)
+        private void clicar(Object sender, EventArgs e)
+        {
+            if (sender == btnReaper)
             {
-                case "Uno":
-                    carro01.Velocidade = "3000000 km/h";
-                    carro01.Marca = "Fiat";
-                    carro01.Ano = 2020;
-                    carro01.Modelo = "Uno";
-                    break;
-                case "Fusca":
-                    carro01.Velocidade = "3 km/h";
-                    carro01.Marca = "Volkswagen";
-                    carro01.Ano = 1945;
-                    carro01.Modelo = "Fusca";
-                    break;
-                case "Brasilia":
-                    carro01.Velocidade = "80 km/h";
-                    carro01.Marca = "Volkswagen";
-                    carro01.Ano = 1995;
-                    carro01.Modelo = "Brasilia";
-                    break;
-
+                MostrarMonstro(ReaperLeviata);
             }
-            
-            img.SizeMode = PictureBoxSizeMode.Zoom;
-            img.Width = 50;
-            img.Height = 100;
-            
-            img.Location = new Point(100, 70);
-            img.Image = Image.FromFile("C:\\Users\\LabInfo\\Desktop\\ds\\img\\" + carro01.Modelo + ".jpg");
-            img.Width = 200;
-            img.Height = 100;
-            
-            MessageBox.Show("Metodo de evento");
-           
-            txtMarca.Text = carro01.Marca;
-            txtModelo.Text = carro01.Modelo;
-            txtVelocidade.Text = carro01.Velocidade;
-            txtAno.Text = carro01.Ano.ToString();
-            this.Controls.AddRange(new Control[] { txtMarca, btnObj01, txtAno, txtModelo, txtVelocidade, img});
-
+            else if (sender == btnGhost)
+            {
+                MostrarMonstro(GhostLeviata);
+            }
+            else if (sender == btnSeaImperor)
+            {
+                MostrarMonstro(SeaEmperorLeviata);
+            }
+            else if (sender == btnSeaDragon)
+            {
+                MostrarMonstro(SeaDragonLeviata);
+            }
         }
-
-        private void InitializeComponent()
-        {
-            this.SuspendLayout();
-            // 
-            // Apresentacao
-            // 
-            this.ClientSize = new System.Drawing.Size(278, 244);
-            this.Name = "Apresentacao";
-            this.ResumeLayout(false);
-
-        }
-
     }
 }

@@ -23,7 +23,12 @@ namespace POO
 
         public override string Som()
         {
-            return Nome + ": Emite o som de um fantasma no momento que ataca";
+            return Nome + ": Emite o som de um fantasma\n no momento que ataca";
+        }
+
+        public override string estado()
+        {
+            return Nome + ": é hostil ao jogador";
         }
     }
 }

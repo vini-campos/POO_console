@@ -26,6 +26,7 @@ namespace POO
         Label lblPeso = new Label();
         Label lblHabitat = new Label();
         Label lblReaperSom = new Label();
+        Label lblComportamento = new Label();
 
         Button btnReaper = new Button();
         Button btnGhost = new Button();
@@ -44,6 +45,7 @@ namespace POO
 
         public Apresentacao()
         {
+
             btnReaper.Click += clicar;
             btnGhost.Click += clicar;
             btnSeaDragon.Click += clicar;
@@ -81,33 +83,37 @@ namespace POO
             btnSeaImperor.ForeColor = Color.White;
 
             //posicao dos dados
-            lblNome.Location = new Point(50, 150);
+            lblNome.Location = new Point(350, 150);
             lblNome.AutoSize = true;
             lblNome.ForeColor = Color.White;
 
-            lblAparencia.Location = new Point(50, 180);
+            lblAparencia.Location = new Point(350, 180);
             lblAparencia.AutoSize = true;
             lblAparencia.ForeColor = Color.White;
 
-            lblMovimento.Location = new Point(50, 210);
+            lblMovimento.Location = new Point(350, 210);
             lblMovimento.AutoSize = true;
             lblMovimento.ForeColor = Color.White;
 
-            lblTamanho.Location = new Point(50, 240);
+            lblTamanho.Location = new Point(350, 240);
             lblTamanho.AutoSize = true;
             lblTamanho.ForeColor = Color.White;
 
-            lblPeso.Location = new Point(50, 270);
+            lblPeso.Location = new Point(350, 270);
             lblPeso.AutoSize = true;
             lblPeso.ForeColor = Color.White;
 
-            lblHabitat.Location = new Point(50, 300);
+            lblHabitat.Location = new Point(350, 300);
             lblHabitat.AutoSize = true;
             lblHabitat.ForeColor = Color.White;
 
-            lblReaperSom.Location = new Point(50, 330);
+            lblReaperSom.Location = new Point(350, 330);
             lblReaperSom.AutoSize = true;
             lblReaperSom.ForeColor = Color.White;
+
+            lblComportamento.Location = new Point(350, 360);
+            lblComportamento.AutoSize = true;
+            lblComportamento.ForeColor = Color.White;
 
             imagem.Size = new Size(500, 250);
             imagem.Location = new Point(350, 450);
@@ -130,15 +136,15 @@ namespace POO
             //panel de fundo texto (borda)
 
 
-            panelBorda.Size = new Size(810, 220);
-            panelBorda.Location = new Point(35, 135);
+            panelBorda.Size = new Size(500, 250);
+            panelBorda.Location = new Point(340, 135);
 
             panelBorda.BackColor = Color.FromArgb(127, 221, 193);
 
             //panel conteúdo do texto
 
-            containerTXT.Size = new Size(800, 210);
-            containerTXT.Location = new Point(40, 140);
+            containerTXT.Size = new Size(490, 240);
+            containerTXT.Location = new Point(345, 140);
 
 
             //panel img (borda)
@@ -154,8 +160,9 @@ namespace POO
 
 
             this.Controls.AddRange(new Control[] { btnReaper, btnGhost, btnSeaDragon, btnSeaImperor, lblNome, lblAparencia,
-                lblMovimento, lblTamanho, lblPeso, lblHabitat, imagem, lblReaperSom, containerTXT, panelBorda, containerBTNs, panelBTN});
+                lblMovimento, lblTamanho, lblPeso, lblHabitat, imagem, lblReaperSom, lblComportamento, containerTXT, panelBorda, containerBTNs, panelBTN});
         }
+
 
         //exibe as infomacoes do btn clicado
         private void MostrarMonstro(Monstro m)
@@ -168,6 +175,7 @@ namespace POO
             imagem.Image = m.Imagem;
             lblHabitat.Text = m.Descricao();
             lblReaperSom.Text = m.Som();
+            lblComportamento.Text = m.estado();
 
             this.Controls.Add(panelIMG);
         }

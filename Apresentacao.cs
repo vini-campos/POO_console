@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Net.Http.Headers;
 using System.Text;
@@ -30,6 +31,16 @@ namespace POO
         Button btnGhost = new Button();
         Button btnSeaDragon = new Button();
         Button btnSeaImperor = new Button();
+
+        //panels
+
+        Panel panelBTN = new Panel();//borda
+        Panel containerBTNs = new Panel();
+        Panel panelBorda = new Panel();//borda
+        Panel containerTXT = new Panel();
+        Panel panelIMG = new Panel();//borda
+
+
 
         public Apresentacao()
         {
@@ -98,12 +109,52 @@ namespace POO
             lblReaperSom.AutoSize = true;
             lblReaperSom.ForeColor = Color.White;
 
-            imagem.Size = new Size(500, 300);
+            imagem.Size = new Size(500, 250);
             imagem.Location = new Point(350, 450);
             imagem.SizeMode = PictureBoxSizeMode.Zoom;
 
+            //panels pra decoração
+
+            //panel de botoes
+
+            panelBTN.Size = new Size(450, 45);
+            panelBTN.Location = new Point(360, 40);
+            panelBTN.BackColor = Color.FromArgb(127, 221, 193);
+
+            containerBTNs.Size = new Size(444, 38);
+            containerBTNs.Location = new Point(363, 43);
+
+
+
+
+            //panel de fundo texto (borda)
+
+
+            panelBorda.Size = new Size(810, 220);
+            panelBorda.Location = new Point(35, 135);
+
+            panelBorda.BackColor = Color.FromArgb(127, 221, 193);
+
+            //panel conteúdo do texto
+
+            containerTXT.Size = new Size(800, 210);
+            containerTXT.Location = new Point(40, 140);
+
+
+            //panel img (borda)
+
+
+            panelIMG.Size = new Size(510, 260);
+            panelIMG.Location = new Point(345, 445);
+
+            panelIMG.BackColor = Color.FromArgb(127, 221, 193);
+
+
+
+
+
             this.Controls.AddRange(new Control[] { btnReaper, btnGhost, btnSeaDragon, btnSeaImperor, lblNome, lblAparencia,
-                lblMovimento, lblTamanho, lblPeso, lblHabitat, imagem, lblReaperSom });
+                lblMovimento, lblTamanho, lblPeso, lblHabitat, imagem, lblReaperSom, containerTXT, panelBorda, containerBTNs, panelBTN});
         }
 
         //exibe as infomacoes do btn clicado
@@ -117,6 +168,8 @@ namespace POO
             imagem.Image = m.Imagem;
             lblHabitat.Text = m.Descricao();
             lblReaperSom.Text = m.Som();
+
+            this.Controls.Add(panelIMG);
         }
 
         private void clicar(Object sender, EventArgs e)
@@ -137,6 +190,24 @@ namespace POO
             {
                 MostrarMonstro(SeaDragonLeviata);
             }
+        }
+
+        private void InitializeComponent()
+        {
+            this.SuspendLayout();
+            // 
+            // Apresentacao
+            // 
+            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Name = "Apresentacao";
+            this.Load += new System.EventHandler(this.Apresentacao_Load);
+            this.ResumeLayout(false);
+
+        }
+
+        private void Apresentacao_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

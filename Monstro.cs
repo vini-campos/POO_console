@@ -15,7 +15,10 @@ namespace POO
         public int Tamanho { get; set; }
         public int Peso { get; set; }
         public string Habitat { get; set; }
+
         public Image Imagem { get; set; }
+
+        
 
         public virtual string Descricao()
         {
@@ -25,6 +28,11 @@ namespace POO
         public virtual string Som()
         {
             return Nome + ": Som genérico";
+        }
+
+        public virtual string estado()
+        {
+            return Nome + ": Estado genérico";
         }
     }
 }

@@ -28,5 +28,9 @@ namespace POO
         {
             return Nome + ": " + "Emite um rugido estremecedor";
         }
+        public override string estado()
+        {
+            return Nome + ": é hostil ao jogador";
+        }
     }
 }

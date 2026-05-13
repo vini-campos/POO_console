@@ -15,13 +15,17 @@ namespace POO
             Movimento = "Atinge suas presas com bolas de fogo para queima-las instantâneamente";
             Tamanho = 125;
             Peso = 8000;
-            Habitat = "Habita a parte ativa das cavernas de magma, protegendo a instalação alienígena dos arquitetos";
+            Habitat = "Habita a parte ativa das cavernas de magma, protegendo a \ninstalação alienígena dos arquitetos";
             Imagem = Properties.Resources.Sea_Dragon;
         }
 
         public override string Som()
         {
             return Nome + ": Emite o som de um dragão no momento de seu ataque";
+        }
+        public override string estado()
+        {
+            return Nome + ": é hostil ao jogador";
         }
     }
 }

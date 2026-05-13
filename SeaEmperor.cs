@@ -15,13 +15,17 @@ namespace POO
             Movimento = "Se alimenta de algas e da flora do planeta 4546-B, pois não é agressivo";
             Tamanho = 75;
             Peso = 6500;
-            Habitat = "Habita as profundas cavernas de magma dentro da instalação da inteligência alienígena: arquitetos";
+            Habitat = "Habita as profundas cavernas de magma dentro da instalação da \ninteligência alienígena: arquitetos";
             Imagem = Properties.Resources.Sea_emperor;
         }
 
         public override string Som()
         {
-            return Nome + ": É capaz de se comunicar com os seres humanos através de telepatia";
+            return Nome + ": É capaz de se comunicar com os seres humanos através de \ntelepatia";
+        }
+        public override string estado()
+        {
+            return Nome + ": é uma criatura pacífica";
         }
     }
 }

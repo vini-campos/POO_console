@@ -52,7 +52,7 @@ namespace POO
             btnSeaImperor.Click += clicar;
 
             this.Text = "Monstros de Subnautica";
-            this.Size = new Size(1200, 800);
+            this.Size = new Size(1200, 650);
             this.BackColor = Color.FromArgb(34, 65, 84);
             this.StartPosition = FormStartPosition.CenterScreen;
 
@@ -66,98 +66,83 @@ namespace POO
             btnSeaImperor.AutoSize = true;
 
             //posicao e cores dos btn
-            btnReaper.Location = new Point(370, 50);
+            btnReaper.Location = new Point(370, 33);
             btnReaper.BackColor = Color.DarkCyan;
             btnReaper.ForeColor = Color.White;
 
-            btnGhost.Location = new Point(480, 50);
+            btnGhost.Location = new Point(480, 33);
             btnGhost.BackColor = Color.DarkCyan;
             btnGhost.ForeColor = Color.White;
 
-            btnSeaDragon.Location = new Point(595, 50);
+            btnSeaDragon.Location = new Point(595, 33);
             btnSeaDragon.BackColor = Color.DarkCyan;
             btnSeaDragon.ForeColor = Color.White;
 
-            btnSeaImperor.Location = new Point(695, 50);
+            btnSeaImperor.Location = new Point(695, 33);
             btnSeaImperor.BackColor = Color.DarkCyan;
             btnSeaImperor.ForeColor = Color.White;
 
             //posicao dos dados
-            lblNome.Location = new Point(350, 150);
+            lblNome.Location = new Point(350, 100);
             lblNome.AutoSize = true;
             lblNome.ForeColor = Color.White;
 
-            lblAparencia.Location = new Point(350, 180);
+            lblAparencia.Location = new Point(350, 130);
             lblAparencia.AutoSize = true;
             lblAparencia.ForeColor = Color.White;
 
-            lblMovimento.Location = new Point(350, 210);
+            lblMovimento.Location = new Point(350, 160);
             lblMovimento.AutoSize = true;
             lblMovimento.ForeColor = Color.White;
 
-            lblTamanho.Location = new Point(350, 240);
+            lblTamanho.Location = new Point(350, 190);
             lblTamanho.AutoSize = true;
             lblTamanho.ForeColor = Color.White;
 
-            lblPeso.Location = new Point(350, 270);
+            lblPeso.Location = new Point(350, 210);
             lblPeso.AutoSize = true;
             lblPeso.ForeColor = Color.White;
 
-            lblHabitat.Location = new Point(350, 300);
+            lblHabitat.Location = new Point(350, 240);
             lblHabitat.AutoSize = true;
             lblHabitat.ForeColor = Color.White;
 
-            lblReaperSom.Location = new Point(350, 330);
+            lblReaperSom.Location = new Point(350, 270);
             lblReaperSom.AutoSize = true;
             lblReaperSom.ForeColor = Color.White;
 
-            lblComportamento.Location = new Point(350, 360);
+            lblComportamento.Location = new Point(350, 300);
             lblComportamento.AutoSize = true;
             lblComportamento.ForeColor = Color.White;
 
             imagem.Size = new Size(500, 250);
-            imagem.Location = new Point(350, 450);
+            imagem.Location = new Point(345, 350);
             imagem.SizeMode = PictureBoxSizeMode.Zoom;
-
-            //panels pra decoração
 
             //panel de botoes
 
             panelBTN.Size = new Size(450, 45);
-            panelBTN.Location = new Point(360, 40);
+            panelBTN.Location = new Point(360, 22);
             panelBTN.BackColor = Color.FromArgb(127, 221, 193);
 
             containerBTNs.Size = new Size(444, 38);
-            containerBTNs.Location = new Point(363, 43);
-
-
-
+            containerBTNs.Location = new Point(363, 25);
 
             //panel de fundo texto (borda)
-
-
             panelBorda.Size = new Size(500, 250);
-            panelBorda.Location = new Point(340, 135);
+            panelBorda.Location = new Point(340, 90);
 
             panelBorda.BackColor = Color.FromArgb(127, 221, 193);
 
             //panel conteúdo do texto
-
             containerTXT.Size = new Size(490, 240);
-            containerTXT.Location = new Point(345, 140);
-
+            containerTXT.Location = new Point(345, 95);
 
             //panel img (borda)
-
-
             panelIMG.Size = new Size(510, 260);
-            panelIMG.Location = new Point(345, 445);
+            panelIMG.Location = new Point(340, 345);
 
             panelIMG.BackColor = Color.FromArgb(127, 221, 193);
-
-
-
-
 
             this.Controls.AddRange(new Control[] { btnReaper, btnGhost, btnSeaDragon, btnSeaImperor, lblNome, lblAparencia,
                 lblMovimento, lblTamanho, lblPeso, lblHabitat, imagem, lblReaperSom, lblComportamento, containerTXT, panelBorda, containerBTNs, panelBTN});
@@ -198,24 +183,6 @@ namespace POO
             {
                 MostrarMonstro(SeaDragonLeviata);
             }
-        }
-
-        private void InitializeComponent()
-        {
-            this.SuspendLayout();
-            // 
-            // Apresentacao
-            // 
-            this.ClientSize = new System.Drawing.Size(284, 261);
-            this.Name = "Apresentacao";
-            this.Load += new System.EventHandler(this.Apresentacao_Load);
-            this.ResumeLayout(false);
-
-        }
-
-        private void Apresentacao_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }
